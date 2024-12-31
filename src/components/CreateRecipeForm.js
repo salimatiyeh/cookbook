@@ -4,6 +4,7 @@ const CreateRecipeForm = () => {
   const [name, setName] = useState('');
   const [ingredients, setIngredients] = useState('');
   const [instructions, setInstructions] = useState('');
+  const [cookTime, setCookTime] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -62,6 +63,16 @@ const CreateRecipeForm = () => {
           onChange={(e) => setInstructions(e.target.value)}
           required
           style={{ width: '100%', padding: '8px', marginBottom: '10px' }}
+        />
+      </div>
+      <div>
+        <label>cook time:</label>
+        <input
+          type="number"
+          value={cookTime}
+          onChange={(e) => setCookTime(e.target.value)}
+          min="0"
+          required
         />
       </div>
       <button type="submit" style={{ padding: '10px 20px', backgroundColor: '#28a745', color: '#fff', border: 'none', cursor: 'pointer' }}>Add Recipe</button>
