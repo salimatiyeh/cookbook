@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import RecipesList from './components/RecipesList';
 import CreateRecipeForm from './components/CreateRecipeForm';
 import Login from './components/Login';
@@ -7,6 +7,7 @@ import Navbar from './components/Navbar';
 import PrivateRoute from './components/PrivateRoute';
 
 const App = () => {
+  const [authToken, setAuthToken] = useState(localStorage.getItem('access_token'));
 
   return (
     <Router>
@@ -23,11 +24,11 @@ const App = () => {
               <CreateRecipeForm />
             </PrivateRoute>
           } />
-          <Route path="/login" element={<Login />} />
-          </Routes>
+          <Route path="/login" element={<Login setAuthToken={setAuthToken} />} />
+        </Routes>
       </div>
     </Router>
-  )
-}
+  );
+};
 
 export default App;

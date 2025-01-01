@@ -15,16 +15,25 @@ const Login = ({ setAuthToken }) => {
         password,
       });
 
-      // Store both access and refresh tokens
-      localStorage.setItem('access_token', response.data.access);
-      localStorage.setItem('refresh_token', response.data.refresh);
+      if (response.status === 200) {
+        localStorage.setItem('access_token', response.data.access);
+        localStorage.setItem('refresh_token', response.data.refresh);
 
-      // Set the access token to state
-      setAuthToken(response.data.access);
-      alert('Login Successful');
-      navigate('/');
+        // Make sure setAuthToken is defined
+        if (setAuthToken) {
+          setAuthToken(response.data.access);
+        }
+
+        alert('Login Successful');
+
+        // Redirect to home page after login
+        navigate('/');
+      } else {
+        alert('Invalid credentials');
+      }
     } catch (error) {
-      alert('Invalid credentials');
+      alert('Invalid credentials or server error.');
+      console.error('Error:', error);
     }
   };
 
@@ -36,7 +45,6 @@ const Login = ({ setAuthToken }) => {
         onChange={(e) => setUsername(e.target.value)}
         required
       />
-
       <label>Password:</label>
       <input
         type="password"
@@ -44,10 +52,9 @@ const Login = ({ setAuthToken }) => {
         onChange={(e) => setPassword(e.target.value)}
         required
       />
-
       <button type="submit">Login</button>
     </form>
-  )
+  );
 };
 
 export default Login;
