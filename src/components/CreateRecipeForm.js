@@ -4,10 +4,11 @@ const CreateRecipeForm = () => {
   const [name, setName] = useState('');
   const [ingredients, setIngredients] = useState('');
   const [instructions, setInstructions] = useState('');
+  const [cookTime, setCookTime] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const newRecipe = { name, ingredients, instructions};
+    const newRecipe = { name, ingredients, instructions, cookTime};
     try {
       const response = await fetch('http://127.0.0.1:8000/api/recipes/', {
         method: 'POST',
@@ -62,6 +63,16 @@ const CreateRecipeForm = () => {
           onChange={(e) => setInstructions(e.target.value)}
           required
           style={{ width: '100%', padding: '8px', marginBottom: '10px' }}
+        />
+      </div>
+      <div>
+        <label>cook time:</label>
+        <input
+          type="number"
+          value={cookTime}
+          onChange={(e) => setCookTime(e.target.value)}
+          min="0"
+          required
         />
       </div>
       <button type="submit" style={{ padding: '10px 20px', backgroundColor: '#28a745', color: '#fff', border: 'none', cursor: 'pointer' }}>Add Recipe</button>

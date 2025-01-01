@@ -1,13 +1,14 @@
 import React from "react";
 
-const RecipeCard = ( { recipe, id } ) => {
-  const { name,  ingredients, instructions } = recipe;
+const RecipeCard = ( { recipe } ) => {
+  const { name,  ingredients, instructions, cook_time } = recipe;
 
   return (
     <div style={styles.card}>
       <h2 style={styles.title}>{name}</h2>
       <p><strong>Ingredients:</strong> {ingredients}</p>
       <p><strong>Instructions:</strong> {instructions}</p>
+      <p><strong>Cook Time:</strong> {cook_time ? `${cook_time} minutes` : 'N/A' }</p>
     </div>
   )
 }
