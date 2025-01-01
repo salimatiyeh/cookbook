@@ -11,6 +11,9 @@ const Navbar = () => {
         <li styles={styles.navItem}>
           <Link to="/create" style={styles.link}>Create Recipe</Link>
         </li>
+        <li>
+          <Link to="/login" style={styles.link}>Login</Link>
+        </li>
       </ul>
     </nav>
   );

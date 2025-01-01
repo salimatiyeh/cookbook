@@ -8,7 +8,7 @@ const CreateRecipeForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const newRecipe = { name, ingredients, instructions};
+    const newRecipe = { name, ingredients, instructions, cookTime};
     try {
       const response = await fetch('http://127.0.0.1:8000/api/recipes/', {
         method: 'POST',
