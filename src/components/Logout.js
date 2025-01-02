@@ -7,12 +7,12 @@ const Logout = () => {
   const handleLogout = () => {
     localStorage.removeItem('access_token');
     localStorage.removeItem('refresh_token');
-    alert('Logged out successfully');
+    alert('Bye DickHead');
     navigate('/login', { replae: true });
   }
 
   return (
-    <button onClick={handleLogout} style={StyleSheet.button}>
+    <button onClick={handleLogout} style={styles.button}>
       Logout
     </button>
   )

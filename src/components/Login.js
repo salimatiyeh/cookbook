@@ -24,12 +24,12 @@ const Login = ({ setAuthToken }) => {
           setAuthToken(response.data.access);
         }
 
-        alert('Login Successful');
+        alert('Fuck Yeah!!');
 
         // Redirect to home page after login
         navigate('/');
       } else {
-        alert('Invalid credentials');
+        alert('Get The Fuck Outta Heeere!!!');
       }
     } catch (error) {
       alert('Invalid credentials or server error.');

@@ -1,10 +1,16 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const RecipeCard = ( { recipe } ) => {
   const { name,  ingredients, instructions, cook_time } = recipe;
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    recipe.id && navigate(`/recipes/${recipe.id}`)
+  };
 
   return (
-    <div style={styles.card}>
+    <div onClick={handleClick} style={styles.card}>
       <h2 style={styles.title}>{name}</h2>
       <p><strong>Ingredients:</strong> {ingredients}</p>
       <p><strong>Instructions:</strong> {instructions}</p>
@@ -21,6 +27,7 @@ const styles = {
     marginBottom: "16px",
     boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
     backgroundColor: "#f9f9f9",
+    cursor: "pointer",
   },
   title: {
     margin: "0 0 8px",
