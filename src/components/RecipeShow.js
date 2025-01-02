@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 const RecipeShow = () => {
   const { id } = useParams();  // Get the recipe ID from the URL
   const [recipe, setRecipe] = useState(null);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchRecipeDetails = async () => {
@@ -32,6 +33,10 @@ const RecipeShow = () => {
     fetchRecipeDetails();
   }, [id]);
 
+  const handleEdit = () => {
+    navigate(`/recipes/${id}/edit`);
+  }
+
   if (error) return <p>{error}</p>;
   if (!recipe) return <p>Loading recipe...</p>;
 
@@ -41,6 +46,7 @@ const RecipeShow = () => {
       <p><strong>Ingredients:</strong> {recipe.ingredients}</p>
       <p><strong>Instructions:</strong> {recipe.instructions}</p>
       <p><strong>Cook Time:</strong> {recipe.cook_time || 'N/A'} minutes</p>
+      <button onClick={handleEdit}>Edit</button>
     </div>
   );
 };
