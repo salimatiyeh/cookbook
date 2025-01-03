@@ -34,6 +34,10 @@ const EditRecipeForm = () => {
     setRecipe({...recipe, [name]: value });
   };
 
+  const handleCancel = () => {
+    navigate(`/recipes/${id}/`)
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const token = localStorage.getItem('access_token');
@@ -79,6 +83,7 @@ const EditRecipeForm = () => {
         onChange={handleChange}
       />
       <button type="submit">Update Recipe</button>
+      <button type="button" onClick={handleCancel}>Cancel</button>
     </form>
   )
 }
