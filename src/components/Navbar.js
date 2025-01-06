@@ -16,6 +16,11 @@ const Navbar = () => {
             <Link to="/create" style={styles.link}>Create Recipe</Link>
           </li>
         )}
+        {isAuthenticated && (
+          <li style={styles.navItem}>
+            <Link to="/add-ingredient" style={styles.link}>Add Ingredient</Link>
+          </li>
+        )}
         {!isAuthenticated ? (
           <li style={styles.navItem}>
             <Link to="/login" style={styles.link}>Login</Link>
