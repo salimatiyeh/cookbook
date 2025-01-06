@@ -7,6 +7,7 @@ import Navbar from './components/Navbar';
 import PrivateRoute from './components/PrivateRoute';
 import RecipeShow from './components/RecipeShow';
 import EditRecipeForm from './components/EditRecipeForm';
+import AddIngredientForm from './components/AddIngredientForm';
 
 const App = () => {
   const [authToken, setAuthToken] = useState(localStorage.getItem('access_token'));
@@ -36,6 +37,11 @@ const App = () => {
               <EditRecipeForm />
             </PrivateRoute>
            } />
+           <Route path="/add-ingredient" element={
+              <PrivateRoute>
+                <AddIngredientForm />
+              </PrivateRoute>
+          } />
           <Route path="/login" element={<Login setAuthToken={setAuthToken} />} />
         </Routes>
       </div>
