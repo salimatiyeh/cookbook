@@ -36,7 +36,7 @@ const App = () => {
             <PrivateRoute>
               <EditRecipeForm />
             </PrivateRoute>
-           } />
+          } />
            <Route path="/add-ingredient" element={
               <PrivateRoute>
                 <AddIngredientForm />
